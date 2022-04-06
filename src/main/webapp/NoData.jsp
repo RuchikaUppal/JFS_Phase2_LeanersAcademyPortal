@@ -4,18 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login Error</title>
+<title>No Records Found</title>
  <link type="text/css" rel="stylesheet" href="css/login.css"> 
 </head>
 <body style="background-image: url('css/background.jpg');">
- <center> <h1> Login Error</h1> </center>   
+ <center> <h1> No Data Available</h1> </center>   
 <form>
 <div class="container" align="center" style="color:red">
-<br>
-<br>
-<br>
-<br>
-Invalid Credentials. Please  <a href="AdminLogin.jsp">Try</a>  Again.
+No Records Found ! Click here to go back to the home page  <a href="AdminHome.jsp">Try</a>  Again.
 </div>
 </form>
 </body>

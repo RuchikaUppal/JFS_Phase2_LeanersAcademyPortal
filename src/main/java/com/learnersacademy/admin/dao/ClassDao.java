@@ -3,9 +3,12 @@ package com.learnersacademy.admin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 
 import com.learnersacademy.admin.bean.ClassBean;
 import com.learnersacademy.admin.util.DBConnection;
@@ -14,10 +17,10 @@ public class ClassDao {
 	
 	  public static void main(String[] args) {
 	  
-	  //ClassDao classDao=new ClassDao();
+	//  ClassDao classDao=new ClassDao();
 	 
 	  //classDao.getClassByID(10008);
-		
+	  
 		/*
 		 * List<ClassBean>listOfClasses=classDao.getAllClasses();
 		 * System.out.println("size is "+listOfClasses.size());
@@ -26,8 +29,7 @@ public class ClassDao {
 		 * System.out.println(classBean.getClassId());
 		 * System.out.println(classBean.getClassName()); }
 		 */
-	  
-	  
+		 
 		/*
 		 * ClassBean classBean=new ClassBean(); classBean.setClassId(10008);
 		 * classBean.setClassName("12 Com B");
@@ -44,7 +46,7 @@ public class ClassDao {
 		  //System.out.println(new ClassDao().deleteClassById(10009));
 	 
 	 }
-		
+	 
 	public ClassBean getClassByID(int classId)
 	{
 		ClassBean classBean=new ClassBean();
@@ -60,6 +62,7 @@ public class ClassDao {
 			{
 				classBean.setClassId(rs.getInt("classId"));
 				classBean.setClassName(rs.getString("classname"));
+				classBean.setSection(rs.getString("section"));
 				
 				/*
 				 * System.out.println(rs.getInt("classId"));
@@ -88,7 +91,7 @@ public class ClassDao {
 		{
 			Connection con=DBConnection.getConnection();
 			Statement stmt= con.createStatement();
-			String query= "Select * from LA_Classes";
+			String query= "Select * from LA_Classes order by classId";
 			ResultSet rs= stmt.executeQuery(query);
 						
 			while(rs.next())
@@ -96,6 +99,8 @@ public class ClassDao {
 				ClassBean classBean=new ClassBean();
 				classBean.setClassId(rs.getInt("classid"));
 				classBean.setClassName(rs.getString("classname"));
+				classBean.setSection(rs.getString("section"));
+				
 				listOfClasses.add(classBean);
 			}			
 		}
@@ -114,11 +119,12 @@ public class ClassDao {
 		try 
 		{
 			Connection con= DBConnection.getConnection();
-			String query= "Insert into LA_Classes values (?,?)";
+			String query= "Insert into LA_Classes values (La_classid_seq.NEXTVAL,?,?)";
 			PreparedStatement pstmt=con.prepareStatement(query);
 			
-			pstmt.setInt(1, classBean.getClassId());
-			pstmt.setString(2, classBean.getClassName());
+			//pstmt.setInt(1, classBean.getClassId());
+			pstmt.setString(1, classBean.getClassName());
+			pstmt.setString(2, classBean.getSection());
 			
 			insertCount= pstmt.executeUpdate();
 			
@@ -138,7 +144,7 @@ public class ClassDao {
 	}
 	
 	
-	public int deleteClassById(int classId)
+	public int deleteClassById(int classId) throws SQLException
 	{
 		int deleteCount=0;
 		try 
@@ -152,6 +158,11 @@ public class ClassDao {
 			deleteCount= pstmt.executeUpdate();
 			System.out.println("Rows impacted " +deleteCount);
 					
+		}
+		catch(SQLException e)
+		{
+			 String errMsg = e.getMessage();
+			 throw new SQLException ("ErrorMes", errMsg);
 		}
 		catch (Exception e) 
 		{
@@ -168,11 +179,12 @@ public class ClassDao {
 		try 
 		{
 			Connection con= DBConnection.getConnection();
-			String query= "Update LA_Classes set Classname=? where classid=?";
+			String query= "Update LA_Classes set Classname=?,section=? where classid=?";
 			PreparedStatement pstmt=con.prepareStatement(query);
 			
 			pstmt.setString(1, classBean.getClassName());
-			pstmt.setInt(2, classBean.getClassId());
+			pstmt.setString(2, classBean.getSection());
+			pstmt.setInt(3, classBean.getClassId());
 			
 			updateCount= pstmt.executeUpdate();
 			

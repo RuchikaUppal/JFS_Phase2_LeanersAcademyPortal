@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.learnersacademy.admin.bean.UserBean;
 import com.learnersacademy.admin.service.UserService;
@@ -28,20 +29,16 @@ public class AdminServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session=request.getSession();
+		
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
 		
-		PrintWriter out= response.getWriter();
-		//out.print("userName >>>>" +userName);
-		
-		//System.out.println("userName" +userName);
+		session.setAttribute(userName, password);
 		
 		UserBean beanFromUser=new UserBean();
 		beanFromUser.setUsername(userName);
 		beanFromUser.setPassword(password);
-		
-		//out.print("userName >>>>" +beanFromUser.getUsername());
-		//out.print("password >>>>" +beanFromUser.getPassword());
 				
 		UserService userService=new UserService();
 		String userType=userService.logIn(beanFromUser);

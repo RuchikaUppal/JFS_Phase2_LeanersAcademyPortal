@@ -17,8 +17,8 @@
 	<br>
 	<br>
 	<br>
-	<div class="container" align="center">   
-        	<b>Welcome to Learners Academy !<b>
+	<div class="container" align="center" >   
+        	<div style="color:red"><b>Something went wrong !! <b></div> 
     </div>   
 </body>
 </html>

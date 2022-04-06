@@ -58,7 +58,7 @@ tr:nth-child(odd) {background: #BBBBBB}
   z-index: 1;
   top: 0;
   left: 0;
-  background-color:#FFF8DC;
+  background-color: #000080;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -72,7 +72,7 @@ tr:nth-child(odd) {background: #BBBBBB}
 }
 
 .sidenav a:hover {
-  color:#FFF8DC;
+  color: blue;
 }
 
 @media screen and (max-height: 450px) {

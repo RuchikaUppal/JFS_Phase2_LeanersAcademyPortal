@@ -3,6 +3,7 @@ package com.learnersacademy.admin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,10 +77,12 @@ public class StudentDao {
 					studentBean.setStudentLastName(rs.getString("stulname"));
 					studentBean.setClassId(rs.getInt("classId"));
 					
-					System.out.println(rs.getInt("stuId"));
-					System.out.println(rs.getString("stufname"));
-					System.out.println(rs.getString("stulname"));
-					System.out.println(rs.getString("classId"));
+					/*
+					 * System.out.println(rs.getInt("stuId"));
+					 * System.out.println(rs.getString("stufname"));
+					 * System.out.println(rs.getString("stulname"));
+					 * System.out.println(rs.getString("classId"));
+					 */
 					 
 				}
 				else
@@ -104,7 +107,7 @@ public class StudentDao {
 			{
 				Connection con=DBConnection.getConnection();
 				Statement stmt= con.createStatement();
-				String query= "Select * from LA_Students";
+				String query= "Select * from LA_Students order by stuid";
 				ResultSet rs= stmt.executeQuery(query);
 							
 				while(rs.next())
@@ -134,13 +137,12 @@ public class StudentDao {
 			try 
 			{
 				Connection con= DBConnection.getConnection();
-				String query= "Insert into LA_Students values (?,?,?,?)";
+				String query= "Insert into LA_Students values (La_stuid_seq.NEXTVAL,?,?,?)";
 				PreparedStatement pstmt=con.prepareStatement(query);
 				
-				pstmt.setInt(1, studentBean.getStudentId());
-				pstmt.setString(2, studentBean.getStudentFirstName());
-				pstmt.setString(3, studentBean.getStudentLastName());
-				pstmt.setInt(4, studentBean.getClassId());
+				pstmt.setString(1, studentBean.getStudentFirstName());
+				pstmt.setString(2, studentBean.getStudentLastName());
+				pstmt.setInt(3, studentBean.getClassId());
 				
 				insertCount= pstmt.executeUpdate();
 				
@@ -160,7 +162,7 @@ public class StudentDao {
 		}
 		
 		
-		public int deleteStudentById(int studentId)
+		public int deleteStudentById(int studentId)throws SQLException
 		{
 			int deleteCount=0;
 			try 
@@ -174,6 +176,11 @@ public class StudentDao {
 				deleteCount= pstmt.executeUpdate();
 				System.out.println("Rows impacted " +deleteCount);
 						
+			}
+			catch(SQLException e)
+			{
+				 String errMsg = e.getMessage();
+				 throw new SQLException ("ErrorMes", errMsg);
 			}
 			catch (Exception e) 
 			{

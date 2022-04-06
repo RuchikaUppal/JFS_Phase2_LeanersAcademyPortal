@@ -3,6 +3,7 @@ package com.learnersacademy.admin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,11 +68,9 @@ public class TeacherDao {
 					teacherBean.setTeacherFirstName(rs.getString("teacherfname"));
 					teacherBean.setTeacherLastName(rs.getString("teacherlname"));
 					
-					
-					
-					  System.out.println(rs.getInt("teacherId"));
-					  System.out.println(rs.getString("teacherfname"));
-					  System.out.println(rs.getString("teacherlname"));
+					  //System.out.println(rs.getInt("teacherId"));
+					 // System.out.println(rs.getString("teacherfname"));
+					  //System.out.println(rs.getString("teacherlname"));
 					 
 				}
 				else
@@ -96,7 +95,7 @@ public class TeacherDao {
 			{
 				Connection con=DBConnection.getConnection();
 				Statement stmt= con.createStatement();
-				String query= "Select * from LA_Teachers";
+				String query= "Select * from LA_Teachers order by teacherId";
 				ResultSet rs= stmt.executeQuery(query);
 							
 				while(rs.next())
@@ -125,12 +124,11 @@ public class TeacherDao {
 			try 
 			{
 				Connection con= DBConnection.getConnection();
-				String query= "Insert into LA_Teachers values (?,?,?)";
+				String query= "Insert into LA_Teachers values (La_teacherId_seq.NEXTVAL,?,?)";
 				PreparedStatement pstmt=con.prepareStatement(query);
 				
-				pstmt.setInt(1, teacherBean.getTeacherId());
-				pstmt.setString(2, teacherBean.getTeacherFirstName());
-				pstmt.setString(3, teacherBean.getTeacherLastName());
+				pstmt.setString(1, teacherBean.getTeacherFirstName());
+				pstmt.setString(2, teacherBean.getTeacherLastName());
 				
 				insertCount= pstmt.executeUpdate();
 				
@@ -150,7 +148,7 @@ public class TeacherDao {
 		}
 		
 		
-		public int deleteTeacherById(int teacherId)
+		public int deleteTeacherById(int teacherId)throws SQLException
 		{
 			int deleteCount=0;
 			try 
@@ -164,6 +162,11 @@ public class TeacherDao {
 				deleteCount= pstmt.executeUpdate();
 				System.out.println("Rows impacted " +deleteCount);
 						
+			}
+			catch(SQLException e)
+			{
+				 String errMsg = e.getMessage();
+				 throw new SQLException ("ErrorMes", errMsg);
 			}
 			catch (Exception e) 
 			{

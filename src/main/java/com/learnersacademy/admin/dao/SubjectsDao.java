@@ -2,6 +2,7 @@ package com.learnersacademy.admin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +70,7 @@ public class SubjectsDao {
 		{
 			Connection con=DBConnection.getConnection();
 			Statement stmt= con.createStatement();
-			String query= "Select * from LA_Subjects";
+			String query= "Select * from LA_Subjects order by subid";
 			ResultSet rs= stmt.executeQuery(query);
 						
 			while(rs.next())
@@ -97,11 +98,10 @@ public class SubjectsDao {
 		try 
 		{
 			Connection con= DBConnection.getConnection();
-			String query= "Insert into LA_Subjects values (?,?)";
+			String query= "Insert into LA_Subjects values (La_subid_seq.NEXTVAL,?)";
 			PreparedStatement pstmt=con.prepareStatement(query);
 			
-			pstmt.setInt(1, subBean.getSubjectId());
-			pstmt.setString(2, subBean.getSubjectName());
+			pstmt.setString(1, subBean.getSubjectName());
 			
 			insertCount= pstmt.executeUpdate();
 			
@@ -121,7 +121,7 @@ public class SubjectsDao {
 	}
 	
 	
-	public int deleteSubjectById(int subjectId)
+	public int deleteSubjectById(int subjectId) throws SQLException
 	{
 		int deleteCount=0;
 		try 
@@ -135,6 +135,11 @@ public class SubjectsDao {
 			deleteCount= pstmt.executeUpdate();
 			System.out.println("Rows impacted " +deleteCount);
 					
+		}
+		catch(SQLException e)
+		{
+			 String errMsg = e.getMessage();
+			 throw new SQLException ("ErrorMes", errMsg);
 		}
 		catch (Exception e) 
 		{

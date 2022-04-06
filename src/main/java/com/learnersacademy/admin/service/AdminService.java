@@ -1,5 +1,6 @@
 package com.learnersacademy.admin.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.learnersacademy.admin.bean.ClassBean;
@@ -17,17 +18,33 @@ import com.learnersacademy.admin.dao.UserDao;
 
 public class AdminService {
 	
+	public static void main(String[] args) {
+		 AdminService service=new AdminService();
+		 
+		  //classDao.getClassByID(10008);
+			
+			
+			  List<ClassBean>listOfClasses=service.viewClasses();
+			  System.out.println("size of the class list "+listOfClasses.size());
+			  
+			  for (ClassBean classBean : listOfClasses) {
+			  System.out.println(classBean.getClassId());
+			  System.out.println(classBean.getClassName()); }
+			 
+	}
+	
 	SubjectsDao subjectDao=new SubjectsDao();
 	StudentDao studentDao=new StudentDao();
 	TeacherDao teacherDao=new TeacherDao();
 	ClassDao classDao=new ClassDao();
+	ClassSubjectDao classSubjectDao=new ClassSubjectDao();
 	
 	public boolean saveSubject(SubjectsBean bean)
 	{
 		return subjectDao.insertSubject(bean);
 	}
 	
-	public int deleteSubject(int subjectId)
+	public int deleteSubject(int subjectId)throws SQLException
 	{
 		return subjectDao.deleteSubjectById(subjectId);
 	}
@@ -47,18 +64,20 @@ public class AdminService {
 		return subjectDao.getSubjectByID(subjectId);
 	}
 	
+	
 	public boolean saveClass(ClassBean bean)
 	{
 		return classDao.insertClass(bean);
 	}
 	
-	public int deleteClass(int classId)
+	public int deleteClass(int classId) throws SQLException
 	{
 		return classDao.deleteClassById(classId);
 	}
 	
-	public List<ClassBean>  viewClasses(ClassBean bean)
+	public List<ClassBean>  viewClasses()
 	{
+		
 		return classDao.getAllClasses();
 	}
 	
@@ -77,7 +96,7 @@ public class AdminService {
 		return teacherDao.insertTeacher(bean);
 	}
 	
-	public int deleteTeacher(int teacherId)
+	public int deleteTeacher(int teacherId)throws SQLException
 	{
 		return teacherDao.deleteTeacherById(teacherId);
 	}
@@ -102,7 +121,7 @@ public class AdminService {
 		return studentDao.insertStudent(bean);
 	}
 	
-	public int deleteStudent(int studentId)
+	public int deleteStudent(int studentId) throws SQLException
 	{
 		return studentDao.deleteStudentById(studentId);
 	}
@@ -123,33 +142,25 @@ public class AdminService {
 	}
 	
 	
-	public void assignSubjectsToClasses()
+	public List<SubjectsBean> viewSubjectsNotInClass(int classId)
 	{
-		// before inserting check if the subject is already assigned to the class
-		ClassSubjectDao userDao=new ClassSubjectDao();
+		
+		List<SubjectsBean>listOfSubNotInClassId=classSubjectDao.getAllSubNotInClassId(classId);
+		return listOfSubNotInClassId;
+		
+	}
 	
-	    
-	    
+	public List<SubjectsBean> viewSubjectsInClass(int classId)
+	{
 		
-		  List<ClassSubjectBean>listOfSubByClassId=userDao.getAllSubByClassId(0);
-		  
-		  if (listOfSubByClassId==null)
-		  {
-			  //insert the sub for the claa
-		  }
-			  
-		  else
-		  {
-			  for (ClassSubjectBean classSubBean : listOfSubByClassId) 
-			  {
-				//take class id from userbean...check which subjects are already assined from db bean
-					
-				  
-			  }
-		  }
-		  
+		List<SubjectsBean>listOfSubInClassId=classSubjectDao.getAllSubByClassId(classId);
+		return listOfSubInClassId;
 		
-		
+	}
+	
+	public boolean saveClassSubject(ClassSubjectBean bean)
+	{
+		return classSubjectDao.insertClassSubject(bean);
 	}
 	
 	public void assignTeacherToClassesAndSubjects()

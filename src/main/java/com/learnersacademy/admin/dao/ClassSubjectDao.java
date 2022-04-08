@@ -13,18 +13,20 @@ import com.learnersacademy.admin.bean.SubjectsBean;
 import com.learnersacademy.admin.util.DBConnection;
 
 public class ClassSubjectDao {
-	public static void main(String[] args) {
-		
-		ClassSubjectDao classDao=new ClassSubjectDao();
-		
-		  List<SubjectsBean>listOfsub=classDao.getAllSubByClassId(10001);
-		  System.out.println("size is "+listOfsub.size());
-		  
-		  for (SubjectsBean Bean : listOfsub) {
-		  System.out.println(Bean.getSubjectId());
-		  System.out.println(Bean.getSubjectName()); }
-		 
-	}
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * ClassSubjectDao classDao=new ClassSubjectDao();
+	 * 
+	 * List<SubjectsBean>listOfsub=classDao.getAllSubByClassId(10001);
+	 * System.out.println("size is "+listOfsub.size());
+	 * 
+	 * for (SubjectsBean Bean : listOfsub) {
+	 * System.out.println(Bean.getSubjectId());
+	 * System.out.println(Bean.getSubjectName()); }
+	 * 
+	 * }
+	 */
 	
 	public  List<SubjectsBean>  getAllSubByClassId(int classId)
 	{
@@ -34,7 +36,8 @@ public class ClassSubjectDao {
 		{
 			Connection con= DBConnection.getConnection();
 			Statement stmt= con.createStatement();
-			String query= "Select * from LA_Subjects where subId in (Select subid from LA_Class_Subject where classId="+classId+")";
+			String query= "Select * from LA_Subjects where subId in "
+					+ "(Select subid from LA_Class_Subject where classId="+classId+")";
 			ResultSet rs= stmt.executeQuery(query);
 		
 			while(rs.next())
@@ -66,7 +69,8 @@ public class ClassSubjectDao {
 		{
 			Connection con= DBConnection.getConnection();
 			Statement stmt= con.createStatement();
-			String query= "Select * from LA_Subjects where subId not in (Select subid from LA_Class_Subject where classId="+classId+")" ;
+			String query= "Select * from LA_Subjects where subId not in "
+					+ "(Select subid from LA_Class_Subject where classId="+classId+")" ;
 			ResultSet rs= stmt.executeQuery(query);
 			
 			while(rs.next())

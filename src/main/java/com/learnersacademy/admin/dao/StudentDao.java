@@ -13,7 +13,7 @@ import com.learnersacademy.admin.util.DBConnection;
 
 public class StudentDao {
 	
-	 public static void main(String[] args) {
+	 //public static void main(String[] args) {
 		  
 			/*
 			 * StudentDao Dao=new StudentDao();
@@ -57,7 +57,7 @@ public class StudentDao {
 			  
 			  //System.out.println(new StudentDao().deleteStudentById(10012));
 		 
-		 }
+		// }
 			
 		public StudentBean getStudentByID(int studentId)
 		{
@@ -220,6 +220,36 @@ public class StudentDao {
 				e.printStackTrace();
 			}
 			return updateStatus;
+		}
+		public List<StudentBean> getAllStudentsByClassId(int classId)
+		{
+			List<StudentBean> listOfStudents=new ArrayList<StudentBean>() ;
+			
+			try 
+			{
+				Connection con=DBConnection.getConnection();
+				Statement stmt= con.createStatement();
+				String query= "Select * from LA_Students where classId="+classId;
+				ResultSet rs= stmt.executeQuery(query);
+							
+				while(rs.next())
+				{
+					StudentBean studentBean=new StudentBean();
+					
+					studentBean.setStudentId(rs.getInt("stuId"));
+					studentBean.setStudentFirstName(rs.getString("stufname"));
+					studentBean.setStudentLastName(rs.getString("stulname"));
+					studentBean.setClassId(rs.getInt("classId"));
+					
+					listOfStudents.add(studentBean);
+				}			
+			}
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
+			
+			return listOfStudents;
 		}
 
 

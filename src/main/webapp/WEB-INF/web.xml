@@ -2,6 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>LearnerAcademy</display-name>
   <welcome-file-list>
+  	<welcome-file>AdminLogin.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -68,5 +69,15 @@
   <servlet-mapping>
     <servlet-name>StudentServlet</servlet-name>
     <url-pattern>/StudentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClassReportServlet</display-name>
+    <servlet-name>ClassReportServlet</servlet-name>
+    <servlet-class>com.learnersacademy.admin.controller.ClassReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassReportServlet</servlet-name>
+    <url-pattern>/ClassReportServlet</url-pattern>
   </servlet-mapping>
 </web-app>

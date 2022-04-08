@@ -22,7 +22,8 @@ th {
 
 tr {
 	border-top:1px solid gray;
-	text-align:center;	
+	text-align:center;
+	background: #BBBBBB	
 }
  
 #wrapper {width: 100%; text-align: center; }

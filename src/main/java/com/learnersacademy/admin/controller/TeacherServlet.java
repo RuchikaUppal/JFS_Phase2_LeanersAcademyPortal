@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.learnersacademy.admin.bean.ClassSubjectBean;
 import com.learnersacademy.admin.bean.TeacherBean;
+import com.learnersacademy.admin.bean.TeacherSubjectClassBean;
 import com.learnersacademy.admin.service.AdminService;
 
 /**
@@ -130,14 +132,71 @@ public class TeacherServlet extends HttpServlet {
 				}
 			}
 			
-		} 
-		
+			if(command.equals("ASSIGNCLASSTOTEACHER"))
+			{
+				String classIdString=request.getParameter("classIdAssigned");
+				int classId= Integer.parseInt(classIdString);
+				
+				String teacherIdString=request.getParameter("teacherId").toString();
+				int teacherId= Integer.parseInt(teacherIdString);
+				
+				request.setAttribute("teacherId", teacherId);
+				request.setAttribute("classId", classId);
+				RequestDispatcher rd=request.getRequestDispatcher("/AssignSubToTeacher.jsp");
+				rd.forward(request,response);
+				
+			}
+			
+			if(command.equals("ASSIGNSUBTOTEACHER"))
+			{
+				String subIdNotAssignedString=request.getParameter("subIdNotAssigned");
+				int subIdNotAssigned=0;
+				
+				if(subIdNotAssignedString!=null)
+				{
+					subIdNotAssigned= Integer.parseInt(subIdNotAssignedString);
+				}
+				else
+				{
+					RequestDispatcher rd=request.getRequestDispatcher("/Fail.jsp");
+					rd.forward(request,response);
+				}
+				
+				
+				String classIdString=request.getParameter("classId");
+				int classId= Integer.parseInt(classIdString);
+				
+				String teacherIdString=request.getParameter("teacherId");
+				int teacherId= Integer.parseInt(teacherIdString);
+				
+				TeacherSubjectClassBean bean=new TeacherSubjectClassBean();
+				bean.setClassId(classId);
+				bean.setSubId(subIdNotAssigned);
+				bean.setTeacherId(teacherId);
+				
+				boolean saveStatus=adminService.saveTeacherClassSubject(bean);
+				
+				if(saveStatus)
+				{
+					RequestDispatcher rd=request.getRequestDispatcher("/Success.jsp");
+					rd.forward(request,response);
+				}
+				else
+				{
+					RequestDispatcher rd=request.getRequestDispatcher("/Fail.jsp");
+					rd.forward(request,response);
+				}
+			
+			} 
+	
+		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 		
 	}
+}
 	
-	}
+
 	

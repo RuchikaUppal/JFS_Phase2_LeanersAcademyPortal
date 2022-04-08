@@ -26,7 +26,7 @@
 		<a class="bar-item" href="${teachersLink}">Teachers</a> 
 		<a class="bar-item" href="${studentsLink}">Students</a> 
 		<a class="bar-item" href="${classReport}">Class Report</a>
-		<a class="bar-item" href="login.jsp">Log out</a>
+		<a class="bar-item" href="AdminLogin.jsp">Log out</a>
 
 </div>
 

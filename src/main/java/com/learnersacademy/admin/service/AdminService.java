@@ -8,36 +8,41 @@ import com.learnersacademy.admin.bean.ClassSubjectBean;
 import com.learnersacademy.admin.bean.StudentBean;
 import com.learnersacademy.admin.bean.SubjectsBean;
 import com.learnersacademy.admin.bean.TeacherBean;
+import com.learnersacademy.admin.bean.TeacherSubjectClassBean;
 import com.learnersacademy.admin.bean.UserBean;
 import com.learnersacademy.admin.dao.ClassDao;
 import com.learnersacademy.admin.dao.ClassSubjectDao;
 import com.learnersacademy.admin.dao.StudentDao;
 import com.learnersacademy.admin.dao.SubjectsDao;
 import com.learnersacademy.admin.dao.TeacherDao;
+import com.learnersacademy.admin.dao.TeacherSubjectClassDao;
 import com.learnersacademy.admin.dao.UserDao;
 
 public class AdminService {
 	
-	public static void main(String[] args) {
-		 AdminService service=new AdminService();
-		 
-		  //classDao.getClassByID(10008);
-			
-			
-			  List<ClassBean>listOfClasses=service.viewClasses();
-			  System.out.println("size of the class list "+listOfClasses.size());
-			  
-			  for (ClassBean classBean : listOfClasses) {
-			  System.out.println(classBean.getClassId());
-			  System.out.println(classBean.getClassName()); }
-			 
-	}
+	/*
+	 * public static void main(String[] args) { AdminService service=new
+	 * AdminService();
+	 * 
+	 * //classDao.getClassByID(10008);
+	 * 
+	 * 
+	 * List<ClassBean>listOfClasses=service.viewClasses();
+	 * System.out.println("size of the class list "+listOfClasses.size());
+	 * 
+	 * for (ClassBean classBean : listOfClasses) {
+	 * System.out.println(classBean.getClassId());
+	 * System.out.println(classBean.getClassName()); }
+	 * 
+	 * }
+	 */
 	
 	SubjectsDao subjectDao=new SubjectsDao();
 	StudentDao studentDao=new StudentDao();
 	TeacherDao teacherDao=new TeacherDao();
 	ClassDao classDao=new ClassDao();
 	ClassSubjectDao classSubjectDao=new ClassSubjectDao();
+	TeacherSubjectClassDao teacherSubjectClassDao=new TeacherSubjectClassDao();
 	
 	public boolean saveSubject(SubjectsBean bean)
 	{
@@ -131,6 +136,12 @@ public class AdminService {
 		return studentDao.getAllStudents();
 	}
 	
+	public List<StudentBean> viewStudentsByClassId(int classId)
+	{
+		return studentDao.getAllStudentsByClassId(classId);
+	}
+	
+	
 	public boolean updateStudent(StudentBean bean)
 	{
 		return studentDao.updateStudentById(bean);
@@ -163,9 +174,49 @@ public class AdminService {
 		return classSubjectDao.insertClassSubject(bean);
 	}
 	
-	public void assignTeacherToClassesAndSubjects()
+	public List<ClassBean> viewClassesAssigendToTeacher(int teacherID)
 	{
-		// before inserting check if the subject and the class  is already assigned to the teacher 
+		
+		List<ClassBean>listOfClassAssignedToTeacher=teacherSubjectClassDao.getAllClassAssignedToTeacher(teacherID);
+		return listOfClassAssignedToTeacher;
+		
+	}
+	
+	public List<ClassBean> viewClassesNotAssigendToTeacher(int teacherID)
+	{
+		
+		List<ClassBean>listOfClassNotAssignedToTeacher=teacherSubjectClassDao.getAllClassNotAssignedToTeacher(teacherID);
+		return listOfClassNotAssignedToTeacher;
+		
+	}
+	
+	public boolean saveTeacherClassSubject(TeacherSubjectClassBean bean)
+	{
+		return teacherSubjectClassDao.insertTeacherSubjectClass(bean);
+	}
+	
+	public List<SubjectsBean> viewSubjectsNotAssignedToTeacher(int classId,int teacherId)
+	{
+		
+		List<SubjectsBean>listOfSubNotAssigned=teacherSubjectClassDao.getAllSubNotAssignedToTeacher(teacherId, classId);
+		return listOfSubNotAssigned;
+		
+	}
+	
+	public List<SubjectsBean> viewSubjectsAssignedToTeacher(int classId, int teacherId)
+	{
+		
+		List<SubjectsBean>listOfSubAssigned=teacherSubjectClassDao.getAllSubAssignedToTeacher(teacherId, classId);
+		return listOfSubAssigned;
+		
+	}
+	
+	public List<TeacherBean> viewAllTeachersByClassId(int classId)
+	{
+		
+		List<TeacherBean>listOfTeachersByClassId=teacherSubjectClassDao.getAllTeacherByClassId(classId);
+		return listOfTeachersByClassId;
+		
 	}
 	
 }

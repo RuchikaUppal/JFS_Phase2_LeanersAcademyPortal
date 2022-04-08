@@ -2,6 +2,7 @@
 <%@page import="com.learnersacademy.admin.bean.SubjectsBean"%>
 <%@page import="java.util.List"%>
 <%@page import="com.learnersacademy.admin.bean.ClassBean"%>
+<%@page import="com.learnersacademy.admin.bean.TeacherBean"%>
 <%@page import="com.learnersacademy.admin.service.AdminService"%>
 <%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -9,19 +10,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assign Class</title>
+<title>Assign Subject</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
 <%
-String classIdString=request.getParameter("classId").toString();
+String teacherIdString=request.getParameter("teacherId").toString();
+int teacherId= Integer.parseInt(teacherIdString);
+
+String classIdString=request.getParameter("classIdAssigned");
 int classId= Integer.parseInt(classIdString);
 
-AdminService service=new AdminService();
-ClassBean classBean=service.viewClasseById(classId);
 
-List<SubjectsBean> subNotInClassList = service.viewSubjectsNotInClass(classId);
-List<SubjectsBean> subInClassList = service.viewSubjectsInClass(classId);
+AdminService service=new AdminService();
+TeacherBean teacherBean=service.viewTeacherById(teacherId);
+ClassBean classbean=service.viewClasseById(classId);
+
+List<SubjectsBean> subNotAssined = service.viewSubjectsNotAssignedToTeacher(classId, teacherId);
+List<SubjectsBean> subAssigned = service.viewSubjectsAssignedToTeacher(classId, teacherId);
+
+
 
 /* out.print("subInClassList above :"+subInClassList.size());
 for(SubjectsBean subjectbean:subInClassList )
@@ -36,7 +44,7 @@ for(SubjectsBean subjectbean:subInClassList )
 		<jsp:include page="Menu.jsp" />
 		<div id="wrapper">
 			<div id="header">
-				<h3>Class Details</h3>
+				<h3>Teacher Details</h3>
 			</div>
 		</div>
 		<br>
@@ -44,32 +52,48 @@ for(SubjectsBean subjectbean:subInClassList )
 		<br>
 		<br>
 		<br>
-		<form action="ClassServlet" method="GET">  
+		<form action="TeacherServlet" method="GET">  
         <div class="container"> 
         <div id="content">  
         <table>
          <tr>
+			<th>Teacher Id</th>
+			<th><%=teacherBean.getTeacherId()%></th>
+			<input type="hidden" name="teacherId" value="<%=teacherBean.getTeacherId()%>" />
+        </tr>
+			
+        <tr>
+			<th>First Name</th>
+			<th><%=teacherBean.getTeacherFirstName()%></th>	
+        </tr>
+        <tr>
+			<th>Last Name</th>
+			<th><%=teacherBean.getTeacherLastName()%></th>
+			
+        </tr>
+        
+        <tr>
 			<th>Class Id</th>
-			<th><%=classBean.getClassId()%></th>
-			<input type="hidden" name="classId" value="<%=classBean.getClassId()%>" />	
+			<th><%=classbean.getClassId()%></th>
+			<input type="hidden" name="classId" value="<%=classbean.getClassId()%>" />
         </tr>
 			
         <tr>
 			<th>Class Name</th>
-			<th><%=classBean.getClassName()%></th>	
+			<th><%=classbean.getClassName()%></th>	
         </tr>
         <tr>
 			<th>Section</th>
-			<th><%=classBean.getSection()%></th>
+			<th><%=classbean.getSection()%></th>
 			
         </tr>
         <tr>
 			<th>Subjects Assigned</th>
 			<th>
 			<%
-			if (subInClassList.size()!=0)
+			if (subAssigned.size()!=0)
 			{
-				for (SubjectsBean subjectBean :subInClassList ) 
+				for (SubjectsBean subjectBean :subAssigned ) 
 				{
 					
 				%>
@@ -89,24 +113,39 @@ for(SubjectsBean subjectbean:subInClassList )
 			
         </tr>
         <tr>
-			<th>Subject To Be Assigned</th>
-			<th><select name="subIdNotAssigned">
+			<th>Subjects To Be Assigned</th>
+			<th>
 			<%
-			for (int i = 0; i <subNotInClassList.size(); i++) 
+			if (subNotAssined.size()!=0)
 			{
 			%>
-				<option value="<%=subNotInClassList.get(i).getSubjectId()%>"><%=subNotInClassList.get(i).getSubjectName()%></option>
-        	<%
+				<select name="subIdNotAssigned">
+				<%	
+				for (int i = 0; i <subNotAssined.size(); i++) 
+				{
+				%>
+					<option value="<%=subNotAssined.get(i).getSubjectId()%>" selected><%=subNotAssined.get(i).getSubjectName()%></option>
+	        	<%
+				}
+				%>
+				</select>
+				<%
 			}
+			else
+			{
         	%>
-    		</select></th>	
+				No Subjects Assigned for the Class 
+			<%
+			}
+			%>
+    		</th>	
 			
         </tr>
         </table>
         <table>
         <tr>
 			<th align="center"><input type="submit"  name="Assign" value="Assign"></th>	
-			<input type="hidden" name="command" value="ASSIGNSUBTOCLASS" />
+			<input type="hidden" name="command" value="ASSIGNSUBTOTEACHER" />
         </tr>
         </table>
         

@@ -50,7 +50,7 @@ List<TeacherBean> teacherList = (List<TeacherBean>) request.getAttribute("Teache
 						<th><a href="UpdateTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Update</a>
 							<a href="DeleteTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId()%>">Delete</a>
 						</th>
-						<th><a href="AssignClassAndSubToTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Assign</a>
+						<th><a href="AssignClassToTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Assign</a>
 					</tr>
 				<%
 					} 

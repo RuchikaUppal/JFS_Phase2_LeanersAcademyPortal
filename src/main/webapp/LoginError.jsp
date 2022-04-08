@@ -8,13 +8,14 @@
  <link type="text/css" rel="stylesheet" href="css/login.css"> 
 </head>
 <body style="background-image: url('css/background.jpg');">
- <center> <h1> Login Error</h1> </center>   
+ <center> <h1> Login Error</h1> </center> 
+ <br>
+<br>
+<br>
+<br>  
 <form>
 <div class="container" align="center" style="color:red">
-<br>
-<br>
-<br>
-<br>
+
 Invalid Credentials. Please  <a href="AdminLogin.jsp">Try</a>  Again.
 </div>
 </form>

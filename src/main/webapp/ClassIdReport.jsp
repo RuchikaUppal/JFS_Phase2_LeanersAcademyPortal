@@ -12,7 +12,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Class Report</title>
-<link type="text/css" rel="stylesheet" href="css/styleNew.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 
 <body style="background-image: url('css/background.jpg');">

@@ -26,8 +26,8 @@
         <table>
 			
         <tr>
-			<th>Subject Name</th>
-			<th><input type="text"  name="subjectName"></th>	
+			<td>Subject Name</td>
+			<td><input type="text"  name="subjectName"></td>	
         </tr>
         </table>
         <table>

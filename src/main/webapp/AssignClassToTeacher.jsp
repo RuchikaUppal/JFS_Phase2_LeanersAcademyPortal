@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assign Class</title>
+<title>Assign Class to Teacher</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -52,24 +52,24 @@ for(SubjectsBean subjectbean:subInClassList )
         <div id="content">  
         <table>
          <tr>
-			<th>Teacher Id</th>
-			<th><%=teacherBean.getTeacherId()%></th>
+			<td>Teacher Id</td>
+			<td><%=teacherBean.getTeacherId()%></td>
 			<input type="hidden" name="teacherId" value="<%=teacherBean.getTeacherId()%>" />
         </tr>
 			
         <tr>
-			<th>First Name</th>
-			<th><%=teacherBean.getTeacherFirstName()%></th>	
+			<td>First Name</td>
+			<td><%=teacherBean.getTeacherFirstName()%></td>	
         </tr>
         <tr>
-			<th>Last Name</th>
-			<th><%=teacherBean.getTeacherLastName()%></th>
+			<td>Last Name</td>
+			<td><%=teacherBean.getTeacherLastName()%></td>
 			
         </tr>
     
         <tr>
-			<th>Select Class</th>
-			<th><select name="classIdAssigned">
+			<td>Select Class</td>
+			<td><select name="classIdAssigned">
 			<%
 			for (int i = 0; i <classList.size(); i++) 
 			{
@@ -78,7 +78,7 @@ for(SubjectsBean subjectbean:subInClassList )
         	<%
 			}
         	%>
-    		</select></th>	
+    		</select></td>	
 			
         </tr>
         </table>

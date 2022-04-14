@@ -36,18 +36,18 @@ ClassBean classBean=service.viewClasseById(classId);
         <div id="content">  
         <table>
         <tr>
-			<th>Class Id</th>
-			<th><%=classBean.getClassId()%></th>
+			<td>Class Id</td>
+			<td><%=classBean.getClassId()%></td>
 			<input type="hidden" name="classId" value="<%=classBean.getClassId()%>" />	
         </tr>
 			
         <tr>
-			<th>Class Name</th>
-			<th><%=classBean.getClassName()%></th>	
+			<td>Class Name</td>
+			<td><%=classBean.getClassName()%></td>	
         </tr>
         <tr>
-			<th>Section</th>
-			<th><%=classBean.getSection()%></th>	
+			<td>Section</td>
+			<td><%=classBean.getSection()%></td>	
         </tr>
         </table>
         <table>

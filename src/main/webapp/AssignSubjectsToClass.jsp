@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assign Class</title>
+<title>Assign Subjects to Class</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -49,23 +49,23 @@ for(SubjectsBean subjectbean:subInClassList )
         <div id="content">  
         <table>
          <tr>
-			<th>Class Id</th>
-			<th><%=classBean.getClassId()%></th>
+			<td>Class Id</td>
+			<td><%=classBean.getClassId()%></td>
 			<input type="hidden" name="classId" value="<%=classBean.getClassId()%>" />	
         </tr>
 			
         <tr>
-			<th>Class Name</th>
-			<th><%=classBean.getClassName()%></th>	
+			<td>Class Name</td>
+			<td><%=classBean.getClassName()%></td>	
         </tr>
         <tr>
-			<th>Section</th>
-			<th><%=classBean.getSection()%></th>
+			<td>Section</td>
+			<td><%=classBean.getSection()%></td>
 			
         </tr>
         <tr>
-			<th>Subjects Assigned</th>
-			<th>
+			<td>Subjects Assigned</td>
+			<td>
 			<%
 			if (subInClassList.size()!=0)
 			{
@@ -85,12 +85,12 @@ for(SubjectsBean subjectbean:subInClassList )
 			<%
 			}
 			%>
-			</th>	
+			</td>	
 			
         </tr>
         <tr>
-			<th>Subject To Be Assigned</th>
-			<th><select name="subIdNotAssigned">
+			<td>Subject To Be Assigned</td>
+			<td><select name="subIdNotAssigned">
 			<%
 			for (int i = 0; i <subNotInClassList.size(); i++) 
 			{
@@ -99,7 +99,7 @@ for(SubjectsBean subjectbean:subInClassList )
         	<%
 			}
         	%>
-    		</select></th>	
+    		</select></td>	
 			
         </tr>
         </table>

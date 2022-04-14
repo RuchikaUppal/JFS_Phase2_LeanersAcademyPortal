@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of Classes</title>
+<title>List of Subjects</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -42,11 +42,11 @@ List<SubjectsBean> subjectList = (List<SubjectsBean>) request.getAttribute("Subj
 				%>
 				
 					<tr>
-						<th><%=subjectList.get(i).getSubjectId()%></th>
-						<th><%=subjectList.get(i).getSubjectName()%></th>
-						<th><a href="UpdateSubject.jsp?subjectId=<%=subjectList.get(i).getSubjectId() %>">Update</a>
+						<td><%=subjectList.get(i).getSubjectId()%></td>
+						<td><%=subjectList.get(i).getSubjectName()%></td>
+						<td><a href="UpdateSubject.jsp?subjectId=<%=subjectList.get(i).getSubjectId() %>">Update</a>
 							<a href="DeleteSubject.jsp?subjectId=<%=subjectList.get(i).getSubjectId()%>">Delete</a>
-						</th>
+						</td>
 					</tr>
 				<%
 					} 
@@ -55,7 +55,7 @@ List<SubjectsBean> subjectList = (List<SubjectsBean>) request.getAttribute("Subj
 				<div id="container">
 					<div id="content">
 						<table>
-							<tr><th><a href="AddSubject.jsp">Add New Subject</a></th></tr>
+							<tr><td><a href="AddSubject.jsp">Add New Subject</a></td></tr>
 						</table>
 					</div>
 				</div>

@@ -26,12 +26,12 @@
         <table>
 			
         <tr>
-			<th>Class Name</th>
-			<th><input type="text"  name="className"></th>	
+			<td>Class Name</td>
+			<td><input type="text"  name="className"></td>	
         </tr>
         <tr>
-			<th>Section</th>
-			<th><input type="text"  name="section"></th>	
+			<td>Section</td>
+			<td><input type="text"  name="section"></td>	
         </tr>
         </table>
         <table>

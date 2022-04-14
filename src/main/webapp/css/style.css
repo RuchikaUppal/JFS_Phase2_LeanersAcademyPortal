@@ -15,18 +15,27 @@ table {
  
 th {
 	border-bottom:1px solid gray;
-	background:none repeat scroll 0 0 #0775d3;
+	background:none repeat scroll 0 0 #000080;
 	padding:10px;
 	color: #FFFFFF;
 }
 
 tr {
 	border-top:1px solid gray;
+	background:none repeat scroll 0 0 #B0C4DE;
+	padding:10px;
 	text-align:center;	
 }
+
+td {
+	border-bottom:1px solid gray;
+	text-align:center;
+	font: bolder;  
+}
+
  
 #wrapper {width: 100%; text-align: center; }
-#header {width: 100%; background: #0775d3; margin-top: 0px; padding:5px 0px 15px 0px;}
+#header {width: 100%; background: #000080; margin-top: 0px; padding:5px 0px 15px 0px;}
 #header h3 {width: 100%; margin:auto; color: #FFFFFF;}
 #container {width: 100%; margin:auto}
 #container h3 {color: #000;}
@@ -50,7 +59,7 @@ tr {
   		  
   justify-content: center;
         padding: 15px;   
-        background-color: #FFF8DC;  
+        
     }   
 
 .sidenav a {

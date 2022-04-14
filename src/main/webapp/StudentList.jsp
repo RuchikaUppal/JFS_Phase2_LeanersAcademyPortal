@@ -49,14 +49,14 @@ AdminService service=new AdminService();
 				%>
 				
 					<tr>
-						<th><%=studentList.get(i).getStudentId()%></th>
-						<th><%=studentList.get(i).getStudentFirstName()%></th>
-						<th><%=studentList.get(i).getStudentLastName()%></th>
-						<th><%=classBean.getClassName()%></th>
-						<th><%=classBean.getSection()%></th>
-						<th><a href="UpdateStudent.jsp?studentId=<%=studentList.get(i).getStudentId() %>">Update</a>
+						<td><%=studentList.get(i).getStudentId()%></td>
+						<td><%=studentList.get(i).getStudentFirstName()%></td>
+						<td><%=studentList.get(i).getStudentLastName()%></td>
+						<td><%=classBean.getClassName()%></td>
+						<td><%=classBean.getSection()%></td>
+						<td><a href="UpdateStudent.jsp?studentId=<%=studentList.get(i).getStudentId() %>">Update</a>
 							<a href="DeleteStudent.jsp?studentId=<%=studentList.get(i).getStudentId()%>">Delete</a>
-						</th>
+						</td>
 					</tr>
 				<%
 					} 
@@ -65,7 +65,7 @@ AdminService service=new AdminService();
 				<div id="container">
 					<div id="content">
 						<table>
-							<tr><th><a href="AddStudent.jsp">Add New Student</a></th></tr>
+							<tr><td><a href="AddStudent.jsp">Add New Student</a></td></tr>
 						</table>
 					</div>
 				</div>

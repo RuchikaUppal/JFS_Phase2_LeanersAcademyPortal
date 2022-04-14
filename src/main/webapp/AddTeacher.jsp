@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Class</title>
+<title>Add Teacher</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -26,12 +26,12 @@
         <table>
 			
         <tr>
-			<th>First Name</th>
-			<th><input type="text"  name="teacherFName"></th>	
+			<td>First Name</td>
+			<td><input type="text"  name="teacherFName"></td>	
         </tr>
         <tr>
-			<th>Last Name</th>
-			<th><input type="text"  name="teacherLName"></th>	
+			<td>Last Name</td>
+			<td><input type="text"  name="teacherLName"></td>	
         </tr>
         </table>
         <table>

@@ -45,14 +45,14 @@ List<ClassBean> classList = (List<ClassBean>) request.getAttribute("ClassList");
 				%>
 				
 					<tr>
-						<th><%=classList.get(i).getClassId()%></th>
-						<th><%=classList.get(i).getClassName()%></th>
-						<th><%=classList.get(i).getSection()%></th>
-						<th><a href="UpdateClass.jsp?classId=<%=classList.get(i).getClassId() %>">Update</a>
+						<td><%=classList.get(i).getClassId()%></td>
+						<td><%=classList.get(i).getClassName()%></td>
+						<td><%=classList.get(i).getSection()%></td>
+						<td><a href="UpdateClass.jsp?classId=<%=classList.get(i).getClassId() %>">Update</a>
 							<a href="DeleteClass.jsp?classId=<%=classList.get(i).getClassId()%>">Delete</a>
-						</th>
-						<th><a href="AssignSubjectsToClass.jsp?classId=<%=classList.get(i).getClassId() %>">Assign</a>
-						</th>
+						</td>
+						<td><a href="AssignSubjectsToClass.jsp?classId=<%=classList.get(i).getClassId() %>">Assign</a>
+						</td>
 					</tr>
 				<%
 					} 
@@ -61,7 +61,7 @@ List<ClassBean> classList = (List<ClassBean>) request.getAttribute("ClassList");
 				<div id="container">
 					<div id="content">
 						<table>
-							<tr><th><a href="AddClass.jsp">Add New Class</a></th></tr>
+							<tr><td><a href="AddClass.jsp">Add New Class</a></td></tr>
 						</table>
 					</div>
 				</div>

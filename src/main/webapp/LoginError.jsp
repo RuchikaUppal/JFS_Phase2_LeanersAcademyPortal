@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login Error</title>
- <link type="text/css" rel="stylesheet" href="css/login.css"> 
+ <link type="text/css" rel="stylesheet" href="css/login1.css"> 
 </head>
 <body style="background-image: url('css/background.jpg');">
  <center> <h1> Login Error</h1> </center> 

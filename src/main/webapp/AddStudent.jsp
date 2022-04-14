@@ -34,16 +34,16 @@ List<ClassBean> classList = service.viewClasses();
         <table>
 			
         <tr>
-			<th>First Name</th>
-			<th><input type="text"  name="studentFName"></th>	
+			<td>First Name</td>
+			<td><input type="text"  name="studentFName"></td>	
         </tr>
         <tr>
-			<th>Last Name</th>
-			<th><input type="text"  name="studentLName"></th>	
+			<td>Last Name</td>
+			<td><input type="text"  name="studentLName"></td>	
         </tr>
         <tr>
-			<th>Class</th>
-			<th><select name="classId">
+			<td>Class</td>
+			<td><select name="classId">
 			<%
 			for (int i = 0; i < classList.size(); i++) 
 			{
@@ -52,7 +52,7 @@ List<ClassBean> classList = service.viewClasses();
         	<%
 			}
         	%>
-    		</select></th>	
+    		</select></td>	
         </tr>
         </table>
         <table>

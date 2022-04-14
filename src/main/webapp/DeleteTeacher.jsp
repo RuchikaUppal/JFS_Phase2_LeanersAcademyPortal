@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete Class</title>
+<title>Delete Teacher</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -36,18 +36,18 @@ TeacherBean teacherBean=service.viewTeacherById(teacherId);
         <div id="content">  
         <table>
         <tr>
-			<th>Teacher Id</th>
-			<th><%=teacherBean.getTeacherId()%></th>
+			<td>Teacher Id</td>
+			<td><%=teacherBean.getTeacherId()%></td>
 			<input type="hidden" name="teacherId" value="<%=teacherBean.getTeacherId()%>" />	
         </tr>
 			
         <tr>
-			<th>First Name</th>
-			<th><%=teacherBean.getTeacherFirstName()%></th>	
+			<td>First Name</td>
+			<td><%=teacherBean.getTeacherFirstName()%></td>	
         </tr>
         <tr>
-			<th>Last Name </th>
-			<th><%=teacherBean.getTeacherLastName()%></th>	
+			<td>Last Name </td>
+			<td><%=teacherBean.getTeacherLastName()%></td>	
         </tr>
         </table>
         <table>

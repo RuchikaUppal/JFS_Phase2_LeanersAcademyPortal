@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete Class</title>
+<title>Delete Subject</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -36,14 +36,14 @@ SubjectsBean subjectBean=service.viewSubjectById(subjectId);
         <div id="content">  
         <table>
          <tr>
-			<th>Subject Id</th>
-			<th><%=subjectBean.getSubjectId()%></th>
+			<td>Subject Id</td>
+			<td><%=subjectBean.getSubjectId()%></td>
 			<input type="hidden" name="subjectId" value="<%=subjectBean.getSubjectId()%>" />	
         </tr>
 			
         <tr>
-			<th>Subject Name</th>
-			<th><input type="text"  name="subjectName" value= "<%=subjectBean.getSubjectName()%>"></th>	
+			<td>Subject Name</td>
+			<td><input type="text"  name="subjectName" value= "<%=subjectBean.getSubjectName()%>"></td>	
         </tr>
         </table>
         <table>

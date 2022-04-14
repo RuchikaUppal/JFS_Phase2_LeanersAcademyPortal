@@ -17,8 +17,11 @@
 	<br>
 	<br>
 	<br>
-	<div class="container" align="center">   
-        	<b>Welcome to Learners Academy !<b>
+	<div class="container" align="center">  
+	<table>
+	<tr><b>Welcome to Learners Academy !</b></tr>
+	</table> 
+        	
     </div>   
 </body>
 </html>

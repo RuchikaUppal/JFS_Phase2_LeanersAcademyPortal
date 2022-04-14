@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assign Subject</title>
+<title>Assign Subjects to Teacher</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -57,39 +57,39 @@ for(SubjectsBean subjectbean:subInClassList )
         <div id="content">  
         <table>
          <tr>
-			<th>Teacher Id</th>
-			<th><%=teacherBean.getTeacherId()%></th>
+			<td>Teacher Id</td>
+			<td><%=teacherBean.getTeacherId()%></td>
 			<input type="hidden" name="teacherId" value="<%=teacherBean.getTeacherId()%>" />
         </tr>
 			
         <tr>
-			<th>First Name</th>
-			<th><%=teacherBean.getTeacherFirstName()%></th>	
+			<td>First Name</td>
+			<td><%=teacherBean.getTeacherFirstName()%></td>	
         </tr>
         <tr>
-			<th>Last Name</th>
-			<th><%=teacherBean.getTeacherLastName()%></th>
+			<td>Last Name</td>
+			<td><%=teacherBean.getTeacherLastName()%></td>
 			
         </tr>
         
         <tr>
-			<th>Class Id</th>
-			<th><%=classbean.getClassId()%></th>
+			<td>Class Id</td>
+			<td><%=classbean.getClassId()%></td>
 			<input type="hidden" name="classId" value="<%=classbean.getClassId()%>" />
         </tr>
 			
         <tr>
-			<th>Class Name</th>
-			<th><%=classbean.getClassName()%></th>	
+			<td>Class Name</td>
+			<td><%=classbean.getClassName()%></td>	
         </tr>
         <tr>
-			<th>Section</th>
-			<th><%=classbean.getSection()%></th>
+			<td>Section</td>
+			<td><%=classbean.getSection()%></td>
 			
         </tr>
         <tr>
-			<th>Subjects Assigned</th>
-			<th>
+			<td>Subjects Assigned</td>
+			<td>
 			<%
 			if (subAssigned.size()!=0)
 			{
@@ -138,7 +138,7 @@ for(SubjectsBean subjectbean:subInClassList )
 			<%
 			}
 			%>
-    		</th>	
+    		</td>	
 			
         </tr>
         </table>

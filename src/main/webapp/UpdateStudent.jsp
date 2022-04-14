@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Class</title>
+<title>Update Student</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-image: url('css/background.jpg');">
@@ -41,23 +41,23 @@ List<ClassBean> classList = service.viewClasses();
         <div id="content">  
         <table>
          <tr>
-			<th>Class Id</th>
-			<th><%=studentBean.getStudentId()%></th>
+			<td>Class Id</td>
+			<td><%=studentBean.getStudentId()%></td>
 			<input type="hidden" name="studentId" value="<%=studentBean.getStudentId()%>" />	
         </tr>
 			
         <tr>
-			<th>First Name</th>
-			<th><input type="text"  name="studentFName" value= "<%=studentBean.getStudentFirstName()%>"></th>	
+			<td>First Name</td>
+			<td><input type="text"  name="studentFName" value= "<%=studentBean.getStudentFirstName()%>"></td>	
         </tr>
         <tr>
-			<th>Last Name</th>
-			<th><input type="text"  name="studentLName" value= "<%=studentBean.getStudentLastName()%>"></th>
+			<td>Last Name</td>
+			<td><input type="text"  name="studentLName" value= "<%=studentBean.getStudentLastName()%>"></td>
 			
         </tr>
         <tr>
-			<th>Class</th>
-			<th><select name="classId">
+			<td>Class</td>
+			<td><select name="classId">
 			<%
 			for (int i = 0; i < classList.size(); i++) 
 			{
@@ -66,7 +66,7 @@ List<ClassBean> classList = service.viewClasses();
         	<%
 			}
         	%>
-    		</select></th>	
+    		</select></td>	
 			
         </tr>
         </table>

@@ -36,8 +36,8 @@ AdminService service=new AdminService();
         <table>
 			
         <tr>
-			<th>Select Class</th>
-			<th><select name="classId">
+			<td>Select Class</td>
+			<td><select name="classId">
 			<%
 			for (int i = 0; i <classList.size(); i++) 
 			{
@@ -46,7 +46,7 @@ AdminService service=new AdminService();
         	<%
 			}
         	%>
-    		</select></th>		
+    		</select></td>		
         </tr>
         </table>
         <table>

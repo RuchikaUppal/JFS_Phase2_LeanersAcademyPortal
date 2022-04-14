@@ -44,13 +44,13 @@ List<TeacherBean> teacherList = (List<TeacherBean>) request.getAttribute("Teache
 				%>
 				
 					<tr>
-						<th><%=teacherList.get(i).getTeacherId()%></th>
-						<th><%=teacherList.get(i).getTeacherFirstName()%></th>
-						<th><%=teacherList.get(i).getTeacherLastName()%></th>
-						<th><a href="UpdateTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Update</a>
+						<td><%=teacherList.get(i).getTeacherId()%></td>
+						<td><%=teacherList.get(i).getTeacherFirstName()%></td>
+						<td><%=teacherList.get(i).getTeacherLastName()%></td>
+						<td><a href="UpdateTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Update</a>
 							<a href="DeleteTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId()%>">Delete</a>
-						</th>
-						<th><a href="AssignClassToTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Assign</a>
+						</td>
+						<td><a href="AssignClassToTeacher.jsp?teacherId=<%=teacherList.get(i).getTeacherId() %>">Assign</a></td>
 					</tr>
 				<%
 					} 
@@ -59,7 +59,7 @@ List<TeacherBean> teacherList = (List<TeacherBean>) request.getAttribute("Teache
 				<div id="container">
 					<div id="content">
 						<table>
-							<tr><th><a href="AddTeacher.jsp">Add New Teacher</a></th></tr>
+							<tr><td><a href="AddTeacher.jsp">Add New Teacher</a></td></tr>
 						</table>
 					</div>
 				</div>

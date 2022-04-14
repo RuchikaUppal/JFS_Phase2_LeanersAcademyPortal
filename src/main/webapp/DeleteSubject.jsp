@@ -36,14 +36,14 @@ SubjectsBean subjectBean=service.viewSubjectById(subjectId);
         <div id="content">  
         <table>
         <tr>
-			<th>Subject Id</th>
-			<th><%=subjectBean.getSubjectId()%></th>
+			<td>Subject Id</td>
+			<td><%=subjectBean.getSubjectId()%></td>
 			<input type="hidden" name="subjectId" value="<%=subjectBean.getSubjectId()%>" />	
         </tr>
 			
         <tr>
-			<th>Subject Name</th>
-			<th><%=subjectBean.getSubjectName()%></th>	
+			<td>Subject Name</td>
+			<td><%=subjectBean.getSubjectName()%></td>	
         </tr>
         </table>
         <table>
